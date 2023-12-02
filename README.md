@@ -8,4 +8,6 @@ gcc mini.c -o mini
 ## Executing the code
 Type 
 ```console
-./mini``` to execute the program.
+./mini
+```
+to execute the program.
