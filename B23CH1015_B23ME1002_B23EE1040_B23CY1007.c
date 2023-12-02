@@ -1,6 +1,4 @@
-#include <stdio.h> 
-#include <string.h> 
-
+#include <stdio.h>
 
 int no_of_candidates;
 int no_of_voters;
@@ -8,7 +6,7 @@ int candidates_count = 0;
 //array to store all symboles.
 char symbols[25] = {'!', '@', '#', '$', '%', '^', '&', '*', '+', '=', '|', '~', '?'};
 // array to keep track of taken symbol.
-int symbol_no[25] = {0}; // Initialize to zeros
+int symbol_no[25] = {0}; 
 //structure to store candidates details.
 struct candidates
 {
@@ -29,13 +27,14 @@ struct voters b[10000];
 int choices()
 {
     int choice;
+    //choices available.
     printf("1. Add candidates.\n");
     printf("2. Show candidates.\n");
     printf("3. Vote.\n");
     printf("4. Result.\n");
     printf("5. Exit.\n");
     printf("Enter choice number: ");
-    scanf("%d", &choice);
+    scanf("%d", &choice);//getting choice number
     return choice;
 }
 //function to add candidates.
@@ -45,9 +44,10 @@ void add_candidates(int no_of_candidates)
     for (int i = 0; i < no_of_candidates; i++)
     {
         printf("Enter name of candidate %d: ", i + 1);
-        scanf("%s", a[candidates_count].name);
+        scanf("%s", a[candidates_count].name);//getting candidates name
 
         printf("Available Symbols: \n");
+        //displaying available symbols
         for (int j = 0; j < 13; j++)
         {
             if (symbol_no[j] == 1)
@@ -56,14 +56,15 @@ void add_candidates(int no_of_candidates)
         }
 
         int num = 0;
+        //getting symbol from user
         printf("Enter the symbol number of candidate %d: ", i + 1);
         scanf("%d", &num);
 
         if (num <= 0 || num > 13 || symbol_no[num - 1] == 1)
         {
-            printf("This Symbol is not available. Please choose from the available symbols\n");
+            printf("This Symbol is not available. Please choose from the available symbols\n");//shows invalid entry
             num = 0;
-            printf("Available Symbols: \n");
+            printf("Available Symbols: \n");//displaying available symbols again
             for (int j = 0; j < 13; j++)
             {
                 if (symbol_no[j] == 1)
@@ -99,17 +100,18 @@ void voting(int no_of_voters)
         printf("Enter age: ");
         scanf("%d", &b[i].age);
 
-        if (b[i].age < 18)
+        if (b[i].age < 18)//checking voters eligibility
         {
             printf("You are not eligible to vote\n");
         }
-        else if (b[i].age == 0 || b[i].age < 0)
+        else if (b[i].age == 0 || b[i].age < 0)//checking age validity
         {
             printf("Invalid age\n");
         }
         else
         {
             show_candidates();
+            //getting vote 
             printf("Voter %d, please enter your choice (1-%d): ", i + 1, candidates_count);
             int choice;
             scanf("%d", &choice);
@@ -140,12 +142,13 @@ void show_result()
     int maxvotes_index = -1;
     int winners = 0;
 
+    //finding candidate with maximum vote.
     for (int i = 0; i < candidates_count; i++)
     {
         if (a[i].votes > max_votes)
         {
             max_votes = a[i].votes;
-            maxvotes_index = i;
+            maxvotes_index = i;//finding index of candidate with m aximum vote.
         }
     }
 
@@ -153,16 +156,18 @@ void show_result()
     {
         if (a[i].votes == max_votes)
         {
-            winners++;
+            winners++; //calculating vote.
         }
     }
 
+    //displaying result.
     if (winners > 1)
     {
-        printf("No candidate has majority votes\n");
+        printf("No candidate has majority votes\n");//all candidate got equal votes.
     }
     else if (maxvotes_index != -1)
     {
+        //displaying the winner.
         printf("Candidate %s with symbol %c won with %d votes\n", a[maxvotes_index].name, a[maxvotes_index].symbol, a[maxvotes_index].votes);
     }
     else
