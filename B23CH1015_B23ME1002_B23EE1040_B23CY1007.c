@@ -195,7 +195,7 @@ int main()
             if (candidates_count > 0)
                 show_candidates();
             else
-                printf("No Candidates available\n");
+                printf("No Candidates available.\n");
             break;
         case 3:
             if (candidates_count > 0)
@@ -206,7 +206,7 @@ int main()
             }
             else
             {
-                printf("Add Candidates first\n");
+                printf("No candidates available to vote.Add Candidates first.\n");
             }
             break;
         case 4:
@@ -214,7 +214,7 @@ int main()
                 show_result();
             }
             else{
-                printf("no candidates available.\n");
+                printf("No candidates available.\n");
                 break;
             }
         case 5:
@@ -228,3 +228,4 @@ int main()
 
     return 0;
 }
+//.....END.....
