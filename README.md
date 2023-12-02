@@ -1,7 +1,9 @@
 ## Compiling the code
 To compile the program mini.c, run the following commands
+```console
 gcc mini.c -o mini
 ./mini
+```
 
 ## Executing the code
-Type ./mini to execute the program.
+Type ```console./mini``` to execute the program.
